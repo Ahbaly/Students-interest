@@ -10,7 +10,6 @@ void main() {
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-
   @override
   State<MyApp> createState() => _MyAppState();
 }
@@ -52,11 +51,26 @@ class _MyAppState extends State<MyApp> {
             decoration: BoxDecoration(
               color: Colors.black12,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+            child: Column(
               children: [
-                Text(jsonData.length.toString() + " trainees")
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [Text(jsonData.length.toString() + " trainees")],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Prev"),
+                    ),
+                    Text(jsonData[0]["name"]),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Next"),
+                    ),
+                  ],
+                )
               ],
             ),
           ),
