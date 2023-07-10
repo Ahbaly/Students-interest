@@ -75,7 +75,10 @@ class _MyAppState extends State<MyApp> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(jsonData.length.toString() + " trainees",style: TextStyle(fontSize: 17),)
+                        Text(
+                          jsonData.length.toString() + " trainees",
+                          style: TextStyle(fontSize: 17),
+                        )
                       ],
                     ),
                     Row(
@@ -103,9 +106,12 @@ class _MyAppState extends State<MyApp> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0,260,0,0),
-
-                  child: Text(intrest(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold )),
+                  padding: const EdgeInsets.fromLTRB(0, 260, 0, 0),
+                  child: Text(intrest(),
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          background: Paint()..color = Colors.green)),
                 )
               ],
             ),
