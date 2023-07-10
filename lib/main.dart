@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-
       home: Scaffold(
         // backgroundColor: Colors.blue.shade50,
         appBar: AppBar(
@@ -20,7 +19,20 @@ class MyApp extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text("test"),
+          child: Container(
+            margin: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.black12,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text("")
+              ],
+            ),
+          ),
         ),
       ),
     );
