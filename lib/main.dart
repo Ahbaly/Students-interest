@@ -27,14 +27,18 @@ class _MyAppState extends State<MyApp> {
   }
 
   void prev() {
-    if(index > 0 )
-      index -= 1;
-    }
-
+    if (index > 0) index -= 1;
+  }
 
   void next() {
-    if(index < jsonData.length - 1 )
-      index += 1;
+    if (index < jsonData.length - 1) index += 1;
+  }
+
+  String intrest() {
+    if (jsonData[index]["interested"])
+      return "interested";
+    else
+      return "not interested";
   }
 
   @override
@@ -66,31 +70,42 @@ class _MyAppState extends State<MyApp> {
             ),
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Text(jsonData.length.toString() + " trainees")],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Column(
                   children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          prev();
-                        });
-                      },
-                      child: Text("Prev"),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(jsonData.length.toString() + " trainees",style: TextStyle(fontSize: 17),)
+                      ],
                     ),
-                    Text(jsonData[index]["name"]),
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          next();
-                        });
-                      },
-                      child: Text("Next"),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              prev();
+                            });
+                          },
+                          child: Text("Prev"),
+                        ),
+                        Text(jsonData[index]["name"]),
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              next();
+                            });
+                          },
+                          child: Text("Next"),
+                        ),
+                      ],
                     ),
                   ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0,260,0,0),
+
+                  child: Text(intrest(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold )),
                 )
               ],
             ),
