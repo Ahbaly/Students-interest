@@ -1,11 +1,37 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  var jsonData;
+
+  Future<void> readJson() async {
+    final String response = await rootBundle.loadString('assets/trainees.json');
+    final data = await json.decode(response);
+    setState(() {
+      jsonData = data;
+      print(jsonData.length);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    readJson();
+  }
 
   // This widget is the root of your application.
   @override
@@ -27,9 +53,10 @@ class MyApp extends StatelessWidget {
               color: Colors.black12,
             ),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text("")
+                Text(jsonData.length.toString() + " trainees")
               ],
             ),
           ),
