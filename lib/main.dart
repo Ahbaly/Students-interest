@@ -16,19 +16,32 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var jsonData;
+  var index;
 
   Future<void> readJson() async {
     final String response = await rootBundle.loadString('assets/trainees.json');
     final data = await json.decode(response);
     setState(() {
       jsonData = data;
-      print(jsonData.length);
     });
+  }
+
+  void prev() {
+    if(index > 0 )
+      index -= 1;
+    }
+
+
+  void next() {
+    if(index < jsonData.length - 1 )
+      index += 1;
   }
 
   @override
   void initState() {
     super.initState();
+    index = 0;
+
     readJson();
   }
 
@@ -61,12 +74,20 @@ class _MyAppState extends State<MyApp> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          prev();
+                        });
+                      },
                       child: Text("Prev"),
                     ),
-                    Text(jsonData[0]["name"]),
+                    Text(jsonData[index]["name"]),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          next();
+                        });
+                      },
                       child: Text("Next"),
                     ),
                   ],
